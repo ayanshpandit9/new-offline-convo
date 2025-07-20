@@ -1,0 +1,13 @@
+name: bot-app
+type: python:3.9
+disk: 512
+web:
+  commands:
+    start: gunicorn -w 1 -b 0.0.0.0:$PORT app:app
+variables:
+  env:
+    PORT: 5000
+mounts:
+  "/tmp":
+    source: local
+    source_path: tmp
